@@ -1,0 +1,20 @@
+<!--Login Form-->
+<div class="auth-container">
+    <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+      <h2>Login</h2>
+      <div class="form-group">
+        <input type="email" ngModel name="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <input type="password" ngModel name="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <!--If user doesn't have an account, directs them to signup-->
+    <span class="signup-text">No account? <a routerLink="/register" class="signup-link">Sign up!</a></span>
+    <!--checks user details if correct, displays error message-->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+
