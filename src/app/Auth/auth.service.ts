@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5300/api/v1/authentication'; // initiate backend API URL
+  private apiUrl = 'http://localhost:5300/api/authentication'; // initiate backend API URL
   private token: string | null = null;
   private authStatusListener = new BehaviorSubject<boolean>(false);
 
@@ -46,11 +46,11 @@ export class AuthService {
         map(response => {
           if (response && response.token && response.id) {
             this.token = response.token; // Save the token
-            this.saveUserId(response.id); // Save the customer ID
-            this.authStatusListener.next(true); // Update the auth status
+            this.saveUserId(response.id); // Save the user ID
+            this.authStatusListener.next(true); // Update auth status
             return response; // Return the response
           } else {
-            throw new Error('Invalid response from server: token or customer_id is missing');
+            throw new Error('Invalid response from server: token or id is missing');
           }
         }),
         catchError(error => {

@@ -41,6 +41,7 @@
     padding: 13px;
     font-size: 16.5px;
     color: #1c1c1c;
+    margin-right: 5px;
   }
 
   ::placeholder {
@@ -111,3 +112,20 @@
   .is-done {
     text-decoration: line-through;
   }
+
+  .upload-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .upload-label {
+    cursor: pointer;
+  }
+  
+  .upload-image {
+    width: 40px; /* Set the desired width */
+    height: 40px;
+    margin-left: 10px; /* Set the desired height */
+    margin-right: 15px;
+  }
+  
