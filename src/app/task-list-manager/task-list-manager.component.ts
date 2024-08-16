@@ -20,7 +20,7 @@ export class TaskListManagerComponent implements OnInit, OnDestroy {
   formData: any = {};
   subscriptions: Subscription = new Subscription();
   hasData: boolean = false;
-  taskData: any = { title: '', description: '' };
+  taskData: any = { title: '', description: '' , picture:''};
   selectedFile: File | null = null;
   
   constructor(
@@ -30,11 +30,11 @@ export class TaskListManagerComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar
   ) {}
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.selectedFile = file;
-    }
+   //facilitates image uploads
+   onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    console.log('Selected File:', this.selectedFile);
+    // You can perform additional actions with the selected file here
   }
 
   ngOnInit(): void {
@@ -80,12 +80,22 @@ export class TaskListManagerComponent implements OnInit, OnDestroy {
    //Function that stores message data
    saveTask(newTaskForm: NgForm): void {
     const user_id = this.authService.getUserId(); // Get id
-    const { title, description, picture } = newTaskForm.value;
+    const { title, description } = newTaskForm.value;
+    
+    // Create a new FormData object
+    const formData = new FormData();
+  
+    // Append form fields to FormData
+    formData.append('user_id', user_id);
+    formData.append('title', title);
+    formData.append('description', description);
+  
+    // Append the selected file to FormData with the correct field name
+    if (this.selectedFile) {
+      formData.append('picture', this.selectedFile); // Field name 'img' must match Multer configuration
+    }
 
-    // Add customer_id to the form data
-    const formDataWithUserId = { ...newTaskForm.value, user_id, title, description, picture };
-
-    this.tasksService.createTask(formDataWithUserId).subscribe(
+    this.tasksService.createTask(formData).subscribe(
       (res: any) => {
         if (res.status === 'success') {
           // Show success message

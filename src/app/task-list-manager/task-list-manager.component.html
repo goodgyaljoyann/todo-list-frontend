@@ -7,7 +7,7 @@
         <label for="photo" class="upload-label">
           <img src="assets/image.png" alt="Upload Photo" class="upload-image">
         </label>
-        <input type="file" id="photo" name="photo" class="form-control" (change)="onFileSelected($event)" style="display: none;">
+        <input type="file" id="photo" name="photo" class="form-control" (change)="onFileSelected($event)" accept="image/*" style="display: none;" >
       </div>
       <button type="submit" class="add-button">+</button>
     </form>    
