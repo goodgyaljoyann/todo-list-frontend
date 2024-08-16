@@ -87,7 +87,7 @@
 
   tr {
     /* padding: 20px; */
-    height: 50px;
+    height: 60px;
     text-align: left;
 
     flex-wrap: nowrap;
@@ -127,5 +127,50 @@
     height: 40px;
     margin-left: 10px; /* Set the desired height */
     margin-right: 15px;
+  }
+  
+  .task-description {
+    margin: 5px 0 0;
+    color: #666; /* Light gray color for description */
+  }
+
+  .task-image {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .task-details {
+    align-items: flex-start;
+  }
+
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .task-image {
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .task-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .task-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task-title {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .task-description {
+    margin: 5px 0 0;
+    color: #666; /* Light gray color for description */
   }
   

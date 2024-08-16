@@ -126,6 +126,7 @@ export class TaskListManagerComponent implements OnInit, OnDestroy {
     );
   }
 
+  
   clearForm(): void {
     this.taskData = { title: '', description: '' };
     this.selectedFile = null;
